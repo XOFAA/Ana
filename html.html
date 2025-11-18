@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Me dá um beijinho?</title>
+
+  <!-- Fonte fofa do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top left, #ffdde1, #ee9ca7);
+      color: #2b2b2b;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #ffffffee;
+      padding: 2.5rem 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .buttons-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      min-height: 140px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.8rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-sim {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(255, 117, 140, 0.4);
+      z-index: 10; /* sempre na frente */
+    }
+
+    .btn-sim:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(255, 117, 140, 0.55);
+    }
+
+    .btn-nao {
+      background: #f1f1f1;
+      color: #555;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+      transition: transform 0.2s ease;
+      z-index: 1;
+    }
+
+    .btn-nao:hover {
+      background: #e7e7e7;
+    }
+
+    .emoji {
+      font-size: 2.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+      }
+
+      .buttons-wrapper {
+        min-height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">😘</div>
+    <h1>Me dá teu cuzinho?</h1>
+    <p class="subtitle">Pensa bem antes de responder... sua escolha é muito importante 😏</p>
+
+    <div class="buttons-wrapper" id="buttonsWrapper">
+      <button class="btn btn-sim" id="btnSim">Sim 💖</button>
+      <button class="btn btn-nao" id="btnNao">Não 😶</button>
+    </div>
+  </div>
+
+  <script>
+    const btnSim = document.getElementById('btnSim');
+    const btnNao = document.getElementById('btnNao');
+    const wrapper = document.getElementById('buttonsWrapper');
+    const title = document.querySelector('h1');
+    const subtitle = document.querySelector('.subtitle');
+    const emoji = document.querySelector('.emoji');
+
+    let naoStartedRunning = false;
+
+    function moveNoButton() {
+      // Ativa modo "fugitivo" apenas quando a pessoa tenta clicar
+      if (!naoStartedRunning) {
+        btnNao.style.position = "absolute";
+        naoStartedRunning = true;
+      }
+
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const btnRect = btnNao.getBoundingClientRect();
+
+      const maxX = wrapperRect.width - btnRect.width;
+      const maxY = wrapperRect.height - btnRect.height;
+
+      let newX = Math.random() * maxX;
+      let newY = Math.random() * maxY;
+
+      const padding = 5;
+      newX = Math.min(Math.max(newX, padding), maxX - padding);
+      newY = Math.min(Math.max(newY, padding), maxY - padding);
+
+      btnNao.style.transform = `translate(${newX}px, ${newY}px)`;
+    }
+
+    // Fugir no desktop (mouse)
+    btnNao.addEventListener('mouseenter', moveNoButton);
+
+    // Fugir se a pessoa for rápida demais 😂
+    btnNao.addEventListener('click', (e) => {
+      e.preventDefault();
+      moveNoButton();
+    });
+
+    // Fugir no celular (toque)
+    btnNao.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      moveNoButton();
+    }, { passive: false });
+
+    // Clique no "Sim"
+    btnSim.addEventListener('click', () => {
+      title.textContent = 'Eu já sabia! 💕';
+      subtitle.textContent = 'Agora vem aqui receber seu beijinho 😘';
+      emoji.textContent = '💋';
+
+      // remove botão NAO
+      btnNao.style.display = 'none';
+
+      // pequena animação
+      btnSim.style.transform = 'scale(1.08)';
+      setTimeout(() => btnSim.style.transform = 'scale(1)', 200);
+    });
+  </script>
+</body>
+</html>
