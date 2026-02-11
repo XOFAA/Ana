@@ -3,257 +3,255 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Só falta marcar 😏💗</title>
+  <title>Lembrei da gente 😏</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family: "Poppins", sans-serif;
+    body{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family:"Poppins",sans-serif;
       background:
-        radial-gradient(circle at top left, #ffe6f1, transparent 55%),
-        radial-gradient(circle at bottom right, #e6fff4, transparent 55%),
-        linear-gradient(135deg, #fff7fb, #f2fffb);
-      color: #1f2937;
-      overflow: hidden;
-      padding: 16px;
+        radial-gradient(circle at 15% 10%, #ffe1ef, transparent 50%),
+        radial-gradient(circle at 85% 90%, #dff9ff, transparent 55%),
+        linear-gradient(135deg, #fff, #f7fbff);
+      color:#111827;
+      padding:16px;
+      overflow:hidden;
     }
 
-    .card {
-      background: #ffffffee;
-      padding: 2.4rem 2rem;
-      border-radius: 1.6rem;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      text-align: center;
-      max-width: 480px;
-      width: 100%;
-      backdrop-filter: blur(8px);
-      position: relative;
-      overflow: hidden;
-      animation: pop 0.5s ease;
+    .card{
+      width:min(520px, 100%);
+      background:rgba(255,255,255,.88);
+      border-radius:22px;
+      padding:28px 22px;
+      text-align:center;
+      box-shadow:0 18px 45px rgba(0,0,0,.14);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+      animation: pop .5s ease;
     }
 
-    @keyframes pop {
-      from { transform: translateY(6px) scale(0.98); opacity: 0; }
-      to   { transform: translateY(0) scale(1); opacity: 1; }
+    @keyframes pop{
+      from{opacity:0; transform: translateY(10px) scale(.98);}
+      to{opacity:1; transform: translateY(0) scale(1);}
     }
 
-    .emoji {
-      font-size: 2.6rem;
-      margin-bottom: 0.6rem;
-      filter: drop-shadow(0 6px 10px rgba(255, 105, 180, 0.25));
+    .top{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:center;
+      margin-bottom:18px;
     }
 
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.6rem;
-      line-height: 1.25;
+    .badge{
+      font-size:.9rem;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(255, 61, 139, .10);
+      color:#ff2f86;
+      font-weight:600;
     }
 
-    p.subtitle {
-      font-size: 1rem;
-      color: #4b5563;
-      margin-bottom: 2rem;
-      line-height: 1.45;
+    .emoji{
+      font-size:2.3rem;
     }
 
-    .buttons-wrapper {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      min-height: 150px;
-      flex-wrap: wrap;
+    h1{
+      font-size:1.45rem;
+      line-height:1.2;
     }
 
-    .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 0.85rem 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, opacity .2s ease;
-      font-weight: 600;
-      white-space: nowrap;
-      user-select: none;
+    .subtitle{
+      color:#4b5563;
+      margin-top:4px;
+      line-height:1.45;
+      font-size:1rem;
     }
 
-    .btn:active { transform: scale(0.96); }
-
-    .btn-sim {
-      background: linear-gradient(135deg, #ff6fb1, #ff3d8b);
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(255, 61, 139, 0.45);
-      z-index: 10;
-    }
-    .btn-sim:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(255, 61, 139, 0.6);
+    .buttons-wrapper{
+      margin-top:20px;
+      position:relative;
+      min-height:150px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
-    .btn-nao {
-      background: #f3f4f6;
-      color: #374151;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      transition: transform 0.2s ease, background .2s ease;
-      z-index: 1;
-      position: relative;
-    }
-    .btn-nao:hover { background: #e5e7eb; }
-
-    .tiny {
-      margin-top: 1rem;
-      font-size: 0.86rem;
-      color: #6b7280;
-      opacity: .9;
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:.86rem 1.9rem;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+      user-select:none;
+      white-space:nowrap;
     }
 
-    /* Telas */
-    .screen {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.2rem;
-      animation: fadeIn .35s ease;
-    }
-    .screen.active { display: flex; }
+    .btn:active{ transform: scale(.97); }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px) scale(0.98); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+    .btn-sim{
+      background:linear-gradient(135deg,#ff4aa0,#ff1f78);
+      color:#fff;
+      box-shadow:0 10px 22px rgba(255, 31, 120, .35);
+      z-index:10;
     }
 
-    /* Corações flutuando */
-    .heart {
-      position: absolute;
-      font-size: 1.2rem;
-      opacity: .16;
-      animation: float 6s linear infinite;
-    }
-    @keyframes float {
-      from { transform: translateY(120%) translateX(0) rotate(0); }
-      to   { transform: translateY(-180%) translateX(30px) rotate(12deg); }
+    .btn-nao{
+      background:#f3f4f6;
+      color:#111827;
+      box-shadow:0 8px 18px rgba(0,0,0,.12);
+      position:relative;
+      z-index:2;
     }
 
-    @media (max-width: 480px) {
-      .card { padding: 2rem 1.5rem; }
-      h1 { font-size: 1.45rem; }
-      p.subtitle { font-size: .98rem; }
-      .btn { padding: 0.75rem 1.5rem; font-size: 0.96rem; }
-      .buttons-wrapper { min-height: 170px; }
+    .tiny{
+      margin-top:12px;
+      font-size:.86rem;
+      color:#6b7280;
+    }
+
+    .screen{ display:none; }
+    .screen.active{ display:block; }
+
+    .float{
+      position:absolute;
+      font-size:1.2rem;
+      opacity:.14;
+      animation: float 7s linear infinite;
+      pointer-events:none;
+    }
+
+    @keyframes float{
+      from{ transform: translateY(140%) rotate(0); }
+      to{ transform: translateY(-180%) rotate(10deg); }
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    a.linkbtn{
+      display:inline-block;
+      text-decoration:none;
     }
   </style>
 </head>
 <body>
-  <div class="card" id="card">
 
-    <!-- corações decorativos -->
-    <div class="heart" style="left:8%;  animation-delay:0s;">💗</div>
-    <div class="heart" style="left:22%; animation-delay:1.2s;">💖</div>
-    <div class="heart" style="left:66%; animation-delay:0.6s;">💘</div>
-    <div class="heart" style="left:82%; animation-delay:1.8s;">💕</div>
+  <div class="card">
+    <div class="float" style="left:15%; animation-delay:0s;">💭</div>
+    <div class="float" style="left:75%; animation-delay:1.4s;">🔥</div>
 
     <!-- TELA 1 -->
-    <div class="screen active" id="screen1">
-      <div class="emoji">😏💗</div>
-      <h1>Então…</h1>
-      <p class="subtitle">
-        A vontade já existe. <br>
-        Falta só marcar pra acontecer.
-      </p>
-
-      <div class="buttons-wrapper" id="buttonsWrapper">
-        <button class="btn btn-sim" id="btnSim">Marcar 🙂</button>
-        <button class="btn btn-nao" id="btnNao">Vou negar</button>
+    <div class="screen active" id="s1">
+      <div class="top">
+        <div class="badge">Quero nosso date</div>
+        <div class="emoji">😍</div>
+        <h1>
+          Tava aqui lembrando aquele dia que a gente se pegou muito...
+        </h1>
+        <p class="subtitle">
+          Lembro como se fosse amanhã, às 20h. <br>
+       
+        </p>
       </div>
 
-      <div class="tiny">
-        *esse “não” é só charme 😌
+      <div class="buttons-wrapper" id="wrap">
+        <button class="btn btn-sim" id="yes">Bora😌</button>
+        <button class="btn btn-nao" id="no">Melhor não...</button>
       </div>
+
+      <div class="tiny">*mas eu sei que você também lembrou 👀</div>
     </div>
 
     <!-- TELA 2 -->
-    <div class="screen" id="screen2">
-      <div class="emoji">😉✨</div>
-      <h1>Fechado.</h1>
-      <p class="subtitle">
-        Me chama no WhatsApp e a gente combina direitinho. <br>
-        O resto… deixa pra depois 😏
-      </p>
-
-      <a
-        class="btn btn-sim"
-        style="display:inline-block; text-decoration:none; margin-top:.6rem;"
-        href="https://wa.me/5592993795370?text=A%20vontade%20j%C3%A1%20existe.%20Falta%20s%C3%B3%20marcar%20pra%20acontecer%20😏"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Me chama aqui 💌
-      </a>
-
-      <div class="tiny" style="margin-top:1.1rem;">
-        *prometo ser comportado… só um pouco 😌
+    <div class="screen" id="s2">
+      <div class="top">
+        <div class="badge">então bora?</div>
+        <div class="emoji">😉✨</div>
+        <h1>Sabia que você ia clicar.</h1>
+        <p class="subtitle">
+          Me chama e a gente resolve isso. <br>
+          Amanhã, às 20h... quem sabe? 😏
+        </p>
       </div>
+
+      <div class="row">
+        <a class="btn btn-sim linkbtn"
+           href="https://wa.me/5592993795370"
+           target="_blank">
+          Chamar no Whats 💌
+        </a>
+
+        <button class="btn btn-nao" id="back">Voltar</button>
+      </div>
+
+      <div class="tiny">*só dizendo 👀</div>
     </div>
 
   </div>
 
   <script>
-    const btnSim = document.getElementById('btnSim');
-    const btnNao = document.getElementById('btnNao');
-    const wrapper = document.getElementById('buttonsWrapper');
-    const screen1 = document.getElementById('screen1');
-    const screen2 = document.getElementById('screen2');
+    const yes = document.getElementById('yes');
+    const no = document.getElementById('no');
+    const wrap = document.getElementById('wrap');
+    const s1 = document.getElementById('s1');
+    const s2 = document.getElementById('s2');
+    const back = document.getElementById('back');
 
-    let naoStartedRunning = false;
+    let running = false;
 
-    function moveNoButton() {
-      if (!naoStartedRunning) {
-        btnNao.style.position = "absolute";
-        naoStartedRunning = true;
+    function moveNo(){
+      if(!running){
+        no.style.position = "absolute";
+        running = true;
       }
 
-      const wrapperRect = wrapper.getBoundingClientRect();
-      const btnRect = btnNao.getBoundingClientRect();
+      const w = wrap.getBoundingClientRect();
+      const b = no.getBoundingClientRect();
 
-      const maxX = wrapperRect.width - btnRect.width;
-      const maxY = wrapperRect.height - btnRect.height;
+      const maxX = w.width - b.width;
+      const maxY = w.height - b.height;
 
-      let newX = Math.random() * maxX;
-      let newY = Math.random() * maxY;
+      let x = Math.random() * maxX;
+      let y = Math.random() * maxY;
 
-      const padding = 6;
-      newX = Math.min(Math.max(newX, padding), maxX - padding);
-      newY = Math.min(Math.max(newY, padding), maxY - padding);
-
-      btnNao.style.transform = `translate(${newX}px, ${newY}px)`;
+      no.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    // fugir no desktop
-    btnNao.addEventListener('mouseenter', moveNoButton);
-    btnNao.addEventListener('click', (e) => { e.preventDefault(); moveNoButton(); });
+    no.addEventListener('mouseenter', moveNo);
+    no.addEventListener('click', (e) => { e.preventDefault(); moveNo(); });
 
-    // fugir no celular
-    btnNao.addEventListener('touchstart', (e) => {
+    no.addEventListener('touchstart', (e) => {
       e.preventDefault();
-      moveNoButton();
+      moveNo();
     }, { passive: false });
 
-    // clique no "Sim" -> troca de tela
-    btnSim.addEventListener('click', () => {
-      btnSim.style.transform = 'scale(1.08)';
-      setTimeout(() => btnSim.style.transform = 'scale(1)', 180);
+    yes.addEventListener('click', () => {
+      s1.classList.remove('active');
+      s2.classList.add('active');
+    });
 
-      screen1.classList.remove('active');
-      screen2.classList.add('active');
+    back.addEventListener('click', () => {
+      s2.classList.remove('active');
+      s1.classList.add('active');
     });
   </script>
+
 </body>
 </html>
